@@ -29,8 +29,7 @@ class TobogganPassVerifier(filepath: String) {
 
   def exactPositionsMatch(annotatedPassword: (Int,Int,Char,String)): Boolean = {
     val (firstPos, secondPos, character, password) = annotatedPassword
-    (password(firstPos-1) == character || password(secondPos-1) == character) &&
-      !(password(firstPos-1) == character && password(secondPos-1) == character)
+    (password(firstPos-1) == character) != (password(secondPos-1) == character)
   }
 
   def solvePart1(): Unit = println(countValidPasswords(appearancesInRange))
