@@ -7,7 +7,7 @@ class TobogganPassVerifier(filepath: String) {
   val scanner: java.util.Scanner = new Scanner(new File(filepath)).useDelimiter("\n")
   val annotatedPasswords: List[(Int, Int, Char, String)] = scanAnnotatedPasswords()
 
-  def scanAnnotatedPasswords(): List[(Int, Int, Char, String)] = {
+  private def scanAnnotatedPasswords(): List[(Int, Int, Char, String)] = {
     var annotatedPasswords: List[(Int, Int, Char, String)] = List()
     while(scanner.hasNext) {
       val next = scanner.next().split(" ")
