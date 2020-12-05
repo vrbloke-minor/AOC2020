@@ -30,12 +30,9 @@ class IdChecker(val filepath: String) {
       val fieldSplit = fieldString.split(":")
       val (field, data) = (fieldSplit.head, fieldSplit.last)
       field match {
-        case "byr" =>
-          validFields += (if((1920 to 2002).contains(data.toInt)) 1 else 0)
-        case "iyr" =>
-          validFields += (if((2010 to 2020).contains(data.toInt)) 1 else 0)
-        case "eyr" =>
-          validFields += (if((2020 to 2030).contains(data.toInt)) 1 else 0)
+        case "byr" => validFields += (if((1920 to 2002).contains(data.toInt)) 1 else 0)
+        case "iyr" => validFields += (if((2010 to 2020).contains(data.toInt)) 1 else 0)
+        case "eyr" => validFields += (if((2020 to 2030).contains(data.toInt)) 1 else 0)
         case "hgt" =>
           data match {
             case hgtRegex(num, "cm") =>
@@ -45,14 +42,10 @@ class IdChecker(val filepath: String) {
             case _ =>
               validFields += 0
           }
-        case "hcl" =>
-          validFields += (if(hclRegex.matches(data)) 1 else 0)
-        case "ecl" =>
-          validFields += (if(eclRegex.matches(data)) 1 else 0)
-        case "pid" =>
-          validFields += (if(pidRegex.matches(data)) 1 else 0)
-        case _ =>
-          validFields += 0
+        case "hcl" => validFields += (if(hclRegex.matches(data)) 1 else 0)
+        case "ecl" => validFields += (if(eclRegex.matches(data)) 1 else 0)
+        case "pid" => validFields += (if(pidRegex.matches(data)) 1 else 0)
+        case _ => validFields += 0
       }
     }
     validFields == requiredFields.size
