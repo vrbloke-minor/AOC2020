@@ -16,7 +16,7 @@ class SeatLocator(val filepath: String) {
   def findPositionByBinaryPartition(letters: String, initRange: Range): Int = {
     var reg: List[Int] = initRange.toList
     for(letter <- letters) {
-      if("FL".contains(letter)) { reg = (reg.head to reg.last - (reg.last-reg.head)/2 - 1).toList }
+      if("FL".contains(letter)) { reg = (reg.head to reg.last - (reg.last-reg.head)/2 + (-1)).toList }
       else if("BR".contains(letter)) { reg = (reg.head + (reg.last-reg.head)/2 + 1 to reg.last).toList }
     }
     reg.head
